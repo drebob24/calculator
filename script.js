@@ -4,6 +4,7 @@ let operator = '';
 let input1 = false;
 let input2 = false;
 let oper = false;
+let decimal = false;
 
 const display = document.querySelector('.display');
 display.textContent = 0;
@@ -48,8 +49,10 @@ function operate(){
             break;
     }
     display.textContent = num1;
+    decimal = false;
     if (num1 === 'Invalid'){
         num1 = 0;
+        num2 = 0;
     }
 }
 
@@ -72,6 +75,9 @@ function evaluateInput(type, text){
             break;
         case 'equal':
             evaulateEqualsInput();
+            break;
+        case 'special':
+            handeSpecial(text);
             break;
     }
 }
@@ -116,10 +122,52 @@ function handleOperaters(sign){
         operator = sign;
         oper = true;
         input1 = true;
+        decimal = false;
     }
     else{
         operate();
         operator = sign;
         input2 = false;
+    }
+}
+
+function handeSpecial(value){
+    switch(value){
+        case '.':
+            if (!decimal){
+                evaluateNumberInput(value);
+                decimal = true;
+            }
+            break;
+        case 'AC':
+            num1 = 0;
+            num2 = 0;
+            operator = '';
+            input1 = false;
+            input2 = false;
+            oper = false;
+            decimal = false;
+            display.textContent = num1;            
+            break;
+        case '⌫':
+            if (input2){
+                num2 = num2.slice(0, -1);
+                display.textContent = num2;
+            }
+            else {
+                num1 = num1.slice(0, -1);
+                display.textContent = num1;
+            }
+            break;
+        case '%':
+            if (input2){
+                num2 = num2/100;
+                display.textContent = num2;
+            }
+            else {
+                num1 = num1/100;
+                display.textContent = num1;
+            }
+            break;
     }
 }
