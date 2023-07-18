@@ -140,34 +140,46 @@ function handeSpecial(value){
             }
             break;
         case 'AC':
-            num1 = 0;
-            num2 = 0;
-            operator = '';
-            input1 = false;
-            input2 = false;
-            oper = false;
-            decimal = false;
-            display.textContent = num1;            
+            resetCalc();
             break;
         case '⌫':
-            if (input2){
-                num2 = num2.slice(0, -1);
-                display.textContent = num2;
-            }
-            else {
-                num1 = num1.slice(0, -1);
-                display.textContent = num1;
-            }
+            handleBackspace();
             break;
         case '%':
-            if (input2){
-                num2 = num2/100;
-                display.textContent = num2;
-            }
-            else {
-                num1 = num1/100;
-                display.textContent = num1;
-            }
+            handlePercentage();
             break;
+    }
+}
+
+function resetCalc(){
+    num1 = 0;
+    num2 = 0;
+    operator = '';
+    input1 = false;
+    input2 = false;
+    oper = false;
+    decimal = false;
+    display.textContent = num1;   
+}
+
+function handleBackspace(){
+    if (input2){
+        num2 = num2.slice(0, -1);
+        display.textContent = num2;
+    }
+    else {
+        num1 = num1.slice(0, -1);
+        display.textContent = num1;
+    }
+}
+
+function handlePercentage(){
+    if (input2){
+        num2 = num2/100;
+        display.textContent = num2;
+    }
+    else {
+        num1 = num1/100;
+        display.textContent = num1;
     }
 }
