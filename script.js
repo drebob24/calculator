@@ -1,34 +1,26 @@
-let num1 = 0;
-let num2 = 0;
-let operator = '';
-let input1 = false;
-let input2 = false;
-let oper = false;
-let decimal = false;
+let num1, num2, operator, input1, input2, oper, decimal;
 
 const display = document.querySelector('.display');
 display.textContent = 0;
 
 function addition(x, y){
-    return sum = x + y;
+    return x + y;
 }
 
 function subtraction(x, y){
-    return difference = x - y;
+    return x - y;
 }
 
 function multiplication(x, y){
-    return product = x * y;
+    return x * y;
 }
 
 function division(x, y){
     if (y === 0){
-        input1 = false;
-        input2 = false;
-        oper = false;
-        return "Invalid"
+        resetCalc();
+        return "Invalid";
     }
-    return quotient = x / y;
+    return x / y;
 }
 
 function operate(){
@@ -51,8 +43,7 @@ function operate(){
     display.textContent = num1;
     decimal = false;
     if (num1 === 'Invalid'){
-        num1 = 0;
-        num2 = 0;
+        num1 = num2 = 0;
     }
 }
 
@@ -85,14 +76,11 @@ function evaluateInput(type, text){
 function evaulateEqualsInput(){
     if (input2){
         operate();
-        input1 = false;
-        input2 = false;
-        oper = false;
+        input1 = input2 = oper = false;
     }
     else {
         display.textContent = num1;
-        input1 = false;
-        oper = false;
+        input1 = oper = false;
     }
 }
 
@@ -120,8 +108,7 @@ function evaluateNumberInput(value){
 function handleOperaters(sign){
     if(!oper){
         operator = sign;
-        oper = true;
-        input1 = true;
+        oper = input1 = true;
         decimal = false;
     }
     else{
@@ -152,13 +139,9 @@ function handeSpecial(value){
 }
 
 function resetCalc(){
-    num1 = 0;
-    num2 = 0;
+    num1 = num2 = 0;
     operator = '';
-    input1 = false;
-    input2 = false;
-    oper = false;
-    decimal = false;
+    input1 = input2 = oper = decimal = false;
     display.textContent = num1;   
 }
 
