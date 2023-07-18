@@ -67,22 +67,26 @@ function evaluateNumberInput(value){
 }
 
 function handleOperaters(sign){
-    if (!oper) {
-        operator = sign;
+    if (!oper) {    
+        //if an operator has not been selected flag that it has, 
+        //set num1, and reallow decimals for num2 input
         oper = input1 = true;
         decimal = false;
     }
     else {
+        //if an operator has been selected already, run operate() and reset
+        //flag to overwrite num2
         operate();
-        operator = sign;
         input2 = false;
     }
+    operator = sign;
 }
 
 function handeSpecial(value){
     switch(value){
         case '.':
             if (!decimal){
+                //if decimal not used, treat as a number and flag its use
                 evaluateNumberInput(value);
                 decimal = true;
             }
@@ -107,21 +111,11 @@ function resetCalc(){
 }
 
 function handleBackspace(){
-    if (input2){
-        num2 = num2.slice(0, -1);
-    }
-    else {
-        num1 = num1.slice(0, -1);
-    }
+    input2 ? num2 = num2.slice(0, -1) : num1 = num1.slice(0, -1);
     display.textContent = input2 ? num2 : num1;
 }
 
 function handlePercentage(){
-    if (input2){
-        num2 = num2/100;
-    }
-    else {
-        num1 = num1/100;
-    }
+    input2 ? num2 /= 100 : num1 /= 100;
     display.textContent = input2 ? num2 : num1;
 }
