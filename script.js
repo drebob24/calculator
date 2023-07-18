@@ -21,6 +21,12 @@ function multiplication(x, y){
 }
 
 function division(x, y){
+    if (y === 0){
+        input1 = false;
+        input2 = false;
+        oper = false;
+        return "Invalid"
+    }
     return quotient = x / y;
 }
 
@@ -41,6 +47,10 @@ function operate(){
             num1 = division(num1, num2);
             break;
     }
+    display.textContent = num1;
+    if (num1 === 'Invalid'){
+        num1 = 0;
+    }
 }
 
 const btns = document.querySelectorAll('button');
@@ -58,9 +68,7 @@ function evaluateInput(type, text){
             evaluateNumberInput(text);
             break;
         case 'oper':
-            operator = text;
-            oper = true;
-            input1 = true;
+            handleOperaters(text);
             break;
         case 'equal':
             evaulateEqualsInput();
@@ -71,7 +79,6 @@ function evaluateInput(type, text){
 function evaulateEqualsInput(){
     if (input2){
         operate();
-        display.textContent = num1;
         input1 = false;
         input2 = false;
         oper = false;
@@ -101,5 +108,18 @@ function evaluateNumberInput(value){
     else {
         num2 += value;
         display.textContent = num2;
+    }
+}
+
+function handleOperaters(sign){
+    if(!oper){
+        operator = sign;
+        oper = true;
+        input1 = true;
+    }
+    else{
+        operate();
+        operator = sign;
+        input2 = false;
     }
 }

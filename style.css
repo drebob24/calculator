@@ -44,7 +44,7 @@ button {
 
 .equal {
     background-color: #e34234;
-    width: 148px;
+    width: 144px;
     border-radius: 50%;
 }
 
@@ -59,6 +59,8 @@ button:active {
 
 .special {
     font-size: 26px;
-    background-color: #ffa62b;
+}
 
+.buttons {
+    display: flex;
 }
