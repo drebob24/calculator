@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Tektur:wght@500&display=swap');
+
+.calculator {
+    text-align: center;
+    border: solid 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px 16px;
+    width: fit-content;
+    margin: 0 auto;
+    background-color: #D1D1D1;
+    border-style: outset;
+    border-radius: 5%;
+}
+
+button {
+    height: 70px;
+    width: 70px;
+    font-size: 36px;
+    margin: 2px;
+    border-radius: 50%;
+    background-color: rgb(77, 77, 77);
+    color: whitesmoke;
+    border: solid 2px #D1D1D1;
+    border-style: groove;
+    box-shadow: 4px 4px 6px 1px rgba(0, 0, 0, 0.24);
+    transition: 0.2s all;
+}
+
+.display{
+    height: 60px;
+    border: solid 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+    margin-bottom: 8px;
+    background-color: #f5f7f4;
+    border-style: inset;
+    font-family: 'Tektur', cursive;
+}
+
+.equal {
+    background-color: #e34234;
+}
+
+.oper {
+    background-color: #ffa62b;
+}
+
+button:active {
+    transform: scale(0.98);
+    box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.24);
+}
+
