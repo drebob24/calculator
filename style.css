@@ -22,7 +22,7 @@ button {
     border-radius: 50%;
     background-color: rgb(77, 77, 77);
     color: whitesmoke;
-    border: solid 2px #D1D1D1;
+    border: solid #D1D1D1;
     border-style: groove;
     box-shadow: 4px 4px 6px 1px rgba(0, 0, 0, 0.24);
     transition: 0.2s all;
